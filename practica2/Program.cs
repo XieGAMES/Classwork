@@ -11,7 +11,7 @@ class FinanceManager
         transactions = new Dictionary<string, List<double>>();
     }
 
-    // Этап 2: Добавление записей
+    
     public void AddTransaction(string category, double amount)
     {
         if (!transactions.ContainsKey(category))
@@ -21,8 +21,6 @@ class FinanceManager
         transactions[category].Add(amount);
         Console.WriteLine("Запись добавлена.");
     }
-
-    // Этап 3: Вывод информации
     public void PrintFinanceReport()
     {
         Console.WriteLine("Финансовый отчет:");
@@ -32,7 +30,7 @@ class FinanceManager
         }
     }
 
-    // Этап 4: Расчет баланса
+    
     public double CalculateBalance()
     {
         double income = transactions.ContainsKey("Доход") ? transactions["Доход"].Sum() : 0;
@@ -40,7 +38,6 @@ class FinanceManager
         return income - expenses;
     }
 
-    // Этап 5: Анализ и прогнозирование
     public double GetAverageExpense(string category)
     {
         if (transactions.ContainsKey(category) && transactions[category].Count > 0)
@@ -57,7 +54,6 @@ class FinanceManager
         return totalMonths > 0 ? totalExpenses / totalMonths : 0;
     }
 
-    // Этап 6: Статистика
     public void PrintStatistics()
     {
         var expenses = transactions.Where(t => t.Key != "Доход").ToDictionary(t => t.Key, t => t.Value.Sum());
